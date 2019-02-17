@@ -38,6 +38,9 @@ cp usr/lib/systemd/system/* /usr/lib/systemd/system
 systemctl daemon-reload
 systemctl reset-failed
 
+mkdir /etc/virtualbmc
+cp etc/virtualbmc/* /etc/virtualbmc/
+
 enable_start tuned
 enable_start vbmcd
 
