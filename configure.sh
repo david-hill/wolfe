@@ -52,6 +52,9 @@ cp etc/firewalld/firewalld.conf /etc/firewalld
 systemctl restart firewalld
 firewall-cmd --reload
 
+wget http://techedemic.com/wp-content/uploads/2015/10/8-07-14_MegaCLI.zip
+wget http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/8-07-14_MegaCLI.zip
+
 
 
 #rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ --exclude VMs --exclude *.tar --exclude *.iso --exclude *.qcow2
