@@ -48,6 +48,8 @@ enable_start vbmcd
 
 tuned-adm profile virtual-host
 
+cp etc/sudoers.d /etc/sudoers.d
+
 cp etc/firewalld/firewalld.conf /etc/firewalld
 systemctl restart firewalld
 firewall-cmd --reload
@@ -58,5 +60,5 @@ wget http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controlle
 
 
 #rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ --exclude VMs --exclude *.tar --exclude *.iso --exclude *.qcow2
-rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ 
+rsync --progress --delete --sparse -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ 
 

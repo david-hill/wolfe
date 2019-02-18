@@ -1,0 +1,2 @@
+Defaults visiblepw
+jenkins	ALL=(ALL) 	NOPASSWD:ALL
