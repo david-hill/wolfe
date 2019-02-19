@@ -22,7 +22,7 @@ function enable_start {
   fi
 }
 
-yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker
+yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs
 
 pip list | grep virtualbmc
 if [ $? -ne 0 ]; then
@@ -33,7 +33,7 @@ mkdir -p /root/.ssh
 cp root/.ssh/* /root/.ssh/
 chmod 600 /root/.ssh/authorized_keys
 
-
+cp usr/local/bin/*  /usr/local/bin/
 cp usr/lib/systemd/system/* /usr/lib/systemd/system
 systemctl daemon-reload
 systemctl reset-failed
@@ -42,6 +42,7 @@ cp etc/ntp.conf /etc
 mkdir /etc/virtualbmc
 cp etc/virtualbmc/* /etc/virtualbmc/
 
+enable_start sshd
 enable_start ntpd
 enable_start tuned
 enable_start vbmcd
@@ -60,5 +61,8 @@ wget http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controlle
 
 
 #rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ --exclude VMs --exclude *.tar --exclude *.iso --exclude *.qcow2
-rsync --progress --delete --sparse -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ 
+
+if [ -e .ssh/id_rsa ]; then
+  rsync --progress --sparse -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ 
+fi
 
