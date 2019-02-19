@@ -22,7 +22,7 @@ function enable_start {
   fi
 }
 
-yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp
+yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl
 
 pip list | grep virtualbmc
 if [ $? -ne 0 ]; then
@@ -68,7 +68,7 @@ firewall-cmd --reload
 
 #rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ --exclude VMs --exclude *.tar --exclude *.iso --exclude *.qcow2
 
-if [ -e .ssh/id_rsa ]; then
+if [ -e /root/.ssh/id_rsa ]; then
   rsync --progress --sparse -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ 
 fi
 
