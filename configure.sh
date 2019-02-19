@@ -33,6 +33,9 @@ mkdir -p /root/.ssh
 cp root/.ssh/* /root/.ssh/
 chmod 600 /root/.ssh/authorized_keys
 
+cp etc/pki/tls/certs/* /etc/pki/tls/certs/
+cp etc/NetworkManager/system-connections/* /etc/NetworkManager/system-connections
+
 cp usr/local/bin/*  /usr/local/bin/
 cp usr/lib/systemd/system/* /usr/lib/systemd/system
 systemctl daemon-reload
