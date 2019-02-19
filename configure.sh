@@ -52,6 +52,8 @@ enable_start vbmcd
 tuned-adm profile virtual-host
 
 cp etc/sudoers.d /etc/sudoers.d
+mkdir -p /var/lib/jenkins/reproducer
+cp var/lib/jenkins/reproducer/* /var/lib/jenkins/reproducer/
 
 cp etc/firewalld/firewalld.conf /etc/firewalld
 systemctl restart firewalld
