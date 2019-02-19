@@ -1,0 +1,13 @@
+[Unit]
+Description=Virtual BMC
+After=local-fs.target network.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/usr/bin/python2 /usr/bin/vbmcd --foreground
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+
