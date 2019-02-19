@@ -60,7 +60,9 @@ firewall-cmd --reload
 wget http://techedemic.com/wp-content/uploads/2015/10/8-07-14_MegaCLI.zip
 wget http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/8-07-14_MegaCLI.zip
 
-
+firewall-cmd --zone=internal --add-service snmp --permanent
+firewall-cmd --zone=FedoraWorkstation --add-service snmp --permanent
+firewall-cmd --reload
 
 #rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ --exclude VMs --exclude *.tar --exclude *.iso --exclude *.qcow2
 
