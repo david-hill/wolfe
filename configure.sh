@@ -22,7 +22,7 @@ function enable_start {
   fi
 }
 
-yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs
+yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp
 
 pip list | grep virtualbmc
 if [ $? -ne 0 ]; then
@@ -38,10 +38,12 @@ cp usr/lib/systemd/system/* /usr/lib/systemd/system
 systemctl daemon-reload
 systemctl reset-failed
 
+cp etc/snmp/* /etc/snmp
 cp etc/ntp.conf /etc
 mkdir /etc/virtualbmc
 cp etc/virtualbmc/* /etc/virtualbmc/
 
+enable_start snmpd
 enable_start sshd
 enable_start ntpd
 enable_start tuned
