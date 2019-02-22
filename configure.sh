@@ -55,6 +55,7 @@ enable_start snmpd
 enable_start sshd
 enable_start ntpd
 enable_start tuned
+enable_start uptimed
 enable_start vbmcd
 
 tuned-adm profile virtual-host
