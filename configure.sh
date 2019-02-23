@@ -33,6 +33,7 @@ mkdir -p /root/.ssh
 cp root/.ssh/* /root/.ssh/
 chmod 600 /root/.ssh/authorized_keys
 
+cp etc/yum.repos.d/* /etc/yum.repos.d/
 cp etc/pki/tls/certs/* /etc/pki/tls/certs/
 cp etc/NetworkManager/system-connections/* /etc/NetworkManager/system-connections
 chmod 600 /etc/NetworkManager/system-connections/*
