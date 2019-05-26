@@ -49,6 +49,7 @@ cp etc/ntp.conf /etc
 mkdir /etc/virtualbmc
 cp etc/virtualbmc/* /etc/virtualbmc/
 
+disable_stop chronyd 
 
 ntpdate 192.168.1.3
 
