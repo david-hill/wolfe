@@ -46,7 +46,7 @@ NagiosGoodDisks = {}
 
 # Startup
 def print_usage():
-	print 'Usage: megaraid-status [--nagios|--debug|--notemp]'
+	print('Usage: megaraid-status [--nagios|--debug|--notemp]')
 
 # We need root access to query
 if __name__ == '__main__':
@@ -55,7 +55,7 @@ if __name__ == '__main__':
 	except AttributeError:
 		root_or_admin = ctypes.windll.shell32.IsUserAnAdmin() !=0
 	if not root_or_admin:
-		print '# This script requires Administrator privileges'
+		print('# This script requires Administrator privileges')
 		sys.exit(5)
 
 # Check command line arguments to enable nagios or not
@@ -118,12 +118,12 @@ if (megaclipath != None):
 		pass
 	else:
 		if nagiosmode:
-			print 'UNKNOWN - Cannot find '+megaclipath
+			print('UNKNOWN - Cannot find '+megaclipath)
 		else:
-			print 'Cannot find ' + megaclipath + 'in your PATH. Please install it.'
+			print('Cannot find ' + megaclipath + 'in your PATH. Please install it.')
 		sys.exit(3)
 else:
-	print 'Cannot find "MegaCli{64,}", "megacli{64,}", "perccli{64,}" or "storcli{64,}" in your PATH. Please install one of them.'
+	print('Cannot find "MegaCli{64,}", "megacli{64,}", "perccli{64,}" or "storcli{64,}" in your PATH. Please install one of them.')
 	sys.exit(3)
 
 
