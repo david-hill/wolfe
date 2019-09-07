@@ -3,8 +3,7 @@ type=internal
 cd /var/lib/jenkins/cloud/
 rc=$?
 if [ $rc -eq 0 ]; then
-#  git checkout 14.0
-  echo 
+  git checkout 15.0
   rc=$?
   if [ $rc -eq 0 ]; then
     sed -i 's/rhel=.*/rhel=7.5/g' setup.cfg.local

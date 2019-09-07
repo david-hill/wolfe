@@ -22,7 +22,9 @@ function enable_start {
   fi
 }
 
-yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl ntpdate uptimed tmux screen dbus-tools terminator
+yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl ntpdate uptimed tmux screen dbus-tools terminator ncurses-devel flex bison openssl-devel elfutils-libelf-devel dnf-utils crash kernel-debug
+
+debuginfo-install kernel
 
 pip list | grep virtualbmc
 if [ $? -ne 0 ]; then
@@ -49,6 +51,7 @@ cp etc/ntp.conf /etc
 mkdir /etc/virtualbmc
 cp etc/virtualbmc/* /etc/virtualbmc/
 
+disable_stop chronyd 
 
 ntpdate 192.168.1.3
 
