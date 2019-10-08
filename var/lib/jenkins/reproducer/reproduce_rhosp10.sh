@@ -37,7 +37,7 @@ if [ $rc -eq 0 ]; then
   fi
 fi
 
-echo "Reproduce $rc" >> /usr/src/kernels/linux-stable-new/state
+echo "Reproduce $rc" >> /var/lib/jenkins/reproducer/state
 echo "Reproduce $rc"
 
 exit $rc

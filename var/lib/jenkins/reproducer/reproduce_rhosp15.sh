@@ -1,12 +1,12 @@
-#type=official
-type=internal
+type=official
+#type=internal
 cd /var/lib/jenkins/cloud/
 rc=$?
 if [ $rc -eq 0 ]; then
   git checkout 15.0
   rc=$?
   if [ $rc -eq 0 ]; then
-    sed -i 's/rhel=.*/rhel=7.5/g' setup.cfg.local
+    sed -i 's/rhel=.*/rhel=8.0/g' setup.cfg.local
     rc=$?
     if [ $rc -eq 0 ]; then
       sed -i 's/releasever=.*/releasever=rhosp15/g' setup.cfg.local
@@ -35,7 +35,7 @@ if [ $rc -eq 0 ]; then
   fi
 fi
 
-echo "Reproduce $rc" >> /usr/src/kernels/linux-stable-new/state
+echo "Reproduce $rc" >> /var/lib/jenkins/reproducer/state
 echo "Reproduce $rc"
 
 exit $rc
