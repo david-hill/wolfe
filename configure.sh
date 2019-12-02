@@ -22,7 +22,7 @@ function enable_start {
   fi
 }
 
-yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl ntpdate uptimed tmux screen dbus-tools terminator ncurses-devel flex bison openssl-devel elfutils-libelf-devel dnf-utils crash kernel-debug
+yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl ntpdate uptimed tmux screen dbus-tools terminator ncurses-devel flex bison openssl-devel elfutils-libelf-devel dnf-utils crash kernel-debug rpm-build
 
 debuginfo-install kernel
 
