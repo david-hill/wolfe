@@ -5,7 +5,7 @@ After=local-fs.target network.target
 [Service]
 User=root
 Type=simple
-ExecStart=/usr/bin/python2 /usr/bin/vbmcd --foreground
+ExecStart=/usr/bin/python3 /usr/local/bin/vbmcd --foreground
 RestartSec=1
 
 [Install]
