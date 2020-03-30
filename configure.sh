@@ -65,6 +65,7 @@ enable_start vbmcd
 tuned-adm profile virtual-host
 
 cp etc/sudoers.d /etc/sudoers.d
+sed -i 's#secure_path = .*#secure_path = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin#' /etc/sudoers
 mkdir -p /var/lib/jenkins/reproducer
 cp var/lib/jenkins/reproducer/* /var/lib/jenkins/reproducer/
 
