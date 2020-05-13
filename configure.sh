@@ -22,7 +22,7 @@ function enable_start {
   fi
 }
 
-yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl ntpdate uptimed tmux screen dbus-tools terminator ncurses-devel flex bison openssl-devel elfutils-libelf-devel dnf-utils crash kernel-debug sysstat
+yum -y install vim jenkins python2-libvirt gcc redhat-rpm-config python2-devel tuned lm_sensors ntp libvirt docker ncurses-compat-libs net-snmp-utils net-snmp numactl ntpdate uptimed tmux screen dbus-tools terminator ncurses-devel flex bison openssl-devel elfutils-libelf-devel dnf-utils crash kernel-debug rpm-build audit-libs-devel augeas cyrus-sasl-devel dbus-devel device-mapper-devel fuse-devel glusterfs-api-devel glusterfs-devel gnutls-devel libacl-devel libattr-devel libblkid-devel libcap-ng-devel libcurl-devel libiscsi-devel libnl3-devel libpcap-devel libpciaccess-devel librados2-devel librbd1-devel libselinux-devel libssh-devel libssh2-devel libtasn1-devel libtirpc-devel libwsman-devel libxml2-devel netcf-devel numactl-devel parted-devel readline-devel rpcgen sanlock-devel systemd-devel systemtap-sdt-devel wireshark-devel xen-devel xfsprogs-devel yajl-devel sysstat
 
 debuginfo-install kernel
 
@@ -65,6 +65,7 @@ enable_start vbmcd
 tuned-adm profile virtual-host
 
 cp etc/sudoers.d /etc/sudoers.d
+sed -i 's#secure_path = .*#secure_path = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin#' /etc/sudoers
 mkdir -p /var/lib/jenkins/reproducer
 cp var/lib/jenkins/reproducer/* /var/lib/jenkins/reproducer/
 

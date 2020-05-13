@@ -1,18 +1,20 @@
-type=official
-#type=internal
+#type=official
+type=internal
+#type=monitoring
 cd /var/lib/jenkins/cloud/
 rc=$?
 if [ $rc -eq 0 ]; then
-  git checkout 15.0
+#  git checkout 16.0
+  echo
   rc=$?
   if [ $rc -eq 0 ]; then
-    sed -i 's/rhel=.*/rhel=8.0/g' setup.cfg.local
+    sed -i 's/rhel=.*/rhel=8.1/g' setup.cfg.local
     rc=$?
     if [ $rc -eq 0 ]; then
-      sed -i 's/releasever=.*/releasever=rhosp15/g' setup.cfg.local
+      sed -i 's/releasever=.*/releasever=rhosp16/g' setup.cfg.local
       rc=$?
       if [ $rc -eq 0 ]; then
-        sed -i 's/minorver=.*/minorver=15.0/g' setup.cfg.local
+        sed -i 's/minorver=.*/minorver=16.0/g' setup.cfg.local
         rc=$?
         if [ $rc -eq 0 ]; then
           bash delete_virsh_vms.sh
@@ -24,7 +26,8 @@ if [ $rc -eq 0 ]; then
               bash create_undercloud.sh $type
               rc=$?
               if [ $rc -eq 0 ]; then
-                bash stop_vms.sh
+#                bash stop_vms.sh
+                echo
                 rc=$?
               fi
             fi
