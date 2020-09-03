@@ -62,7 +62,7 @@ enable_start tuned
 enable_start uptimed
 enable_start vbmcd
 
-tuned-adm profile virtual-host
+tuned-adm profile balanced
 
 cp etc/sudoers.d /etc/sudoers.d
 sed -i 's#secure_path = .*#secure_path = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin#' /etc/sudoers
