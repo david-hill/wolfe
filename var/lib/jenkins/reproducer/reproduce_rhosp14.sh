@@ -1,5 +1,5 @@
-#type=official
-type=internal
+type=official
+#type=internal
 cd /var/lib/jenkins/cloud/
 rc=$?
 if [ $rc -eq 0 ]; then

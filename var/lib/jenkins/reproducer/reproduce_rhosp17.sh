@@ -1,22 +1,27 @@
 type=official
-#type=internal
+type=internal
+#type=monitoring
 lockedrhelrelease=0
+rhel=8.3
+releasever=rhosp17
+standalone=0
+minorver=17.0
 cd /var/lib/jenkins/cloud/
 rc=$?
 if [ $rc -eq 0 ]; then
-#  git checkout 13.0
-  echo
+  git checkout 17.0
   rc=$?
   if [ $rc -eq 0 ]; then
-    sed -i 's/rhel=.*/rhel=7.9/g' setup.cfg.local
+    sed -i "s/^rhel=.*/rhel=${rhel}/g" setup.cfg.local
+    sed -i "s/lockedrhelrelease=.*/lockedrhelrelease=${rhelrelease}/g" setup.cfg.local
     rc=$?
     if [ $rc -eq 0 ]; then
-      sed -i "s/lockedrhelrelease=.*/lockedrhelrelease=0/g" setup.cfg.local
-      rc=$?
-      sed -i 's/releasever=.*/releasever=rhosp13/g' setup.cfg.local
+#      sed -i "s/releasever=.*/releasever=rhosp-beta/g" setup.cfg.local
+      sed -i "s/standalone=.*/standalone=$standalone/g" setup.cfg.local
+      sed -i "s/releasever=.*/releasever=${releasever}/g" setup.cfg.local
       rc=$?
       if [ $rc -eq 0 ]; then
-        sed -i 's/minorver=.*/minorver=13.0/g' setup.cfg.local
+        sed -i "s/minorver=.*/minorver=${minorver}/g" setup.cfg.local
         rc=$?
         if [ $rc -eq 0 ]; then
           bash delete_virsh_vms.sh
@@ -29,7 +34,7 @@ if [ $rc -eq 0 ]; then
               rc=$?
               if [ $rc -eq 0 ]; then
 #                bash stop_vms.sh
-                echo Undercloud is up.
+                echo
                 rc=$?
               fi
             fi
