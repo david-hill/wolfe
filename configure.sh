@@ -91,6 +91,8 @@ firewall-cmd --permanent --add-service ntp --zone=libvirt
 
 firewall-cmd --reload
 
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
 #rsync --progress --inplace -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ --exclude VMs --exclude *.tar --exclude *.iso --exclude *.qcow2
 
 if [ -e /root/.ssh/id_rsa ]; then
