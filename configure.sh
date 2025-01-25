@@ -99,3 +99,5 @@ if [ -e /root/.ssh/id_rsa ]; then
   rsync --progress --sparse -a -v -e ssh  root@192.168.1.3:/var/lib/jenkins/ /var/lib/jenkins/ 
 fi
 
+sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+
