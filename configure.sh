@@ -75,6 +75,8 @@ sed -i 's#secure_path = .*#secure_path = /usr/local/sbin:/usr/local/bin:/usr/sbi
 mkdir -p /var/lib/jenkins/reproducer
 cp var/lib/jenkins/reproducer/* /var/lib/jenkins/reproducer/
 
+cp etc/systemd/sleep.conf /etc/systemd
+
 cp etc/firewalld/firewalld.conf /etc/firewalld
 systemctl restart firewalld
 firewall-cmd --reload
