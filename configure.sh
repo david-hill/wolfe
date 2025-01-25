@@ -103,3 +103,9 @@ fi
 
 sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
 
+modprobe i8k
+sensors-detect
+sensors -s
+pwmconfig
+systemctl enable fancontrol
+systemctl start fancontrol
